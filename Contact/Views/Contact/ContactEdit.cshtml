@@ -1,0 +1,45 @@
+@model ContactModel
+
+
+<div class="d-flex justify-content-center align-items-center w-100 rounded-3 bg-light">
+    <form class="d-flex flex-column m-4 w-100">
+        <!-- name input -->
+        <div class="mb-3 d-flex flex-row">
+            <div class="w-50 me-1">
+                <label for="first-name-input" class="form-label">First name</label>
+                <input type="text" class="form-control" id="first-name-input" asp-for="Contact.FirstName">
+            </div>
+            <div class="w-50 ms-1">
+                <label for="last-name-input" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="last-name-input" asp-for="Contact.LastName">
+            </div>
+        </div>
+
+        <!-- contact input -->
+        <div class="mb-3 d-flex flex-column">
+            <label for="phone-number-input" class="form-label">Phone number :</label>
+            <input type="text" class="form-control" id="phone-number-input" asp-for="Contact.PhoneNumber">
+        </div>
+
+        <div class="mb-3 d-flex flex-column">
+            <label for="email-input" class="form-label">Email :</label>
+            <input type="text" class="form-control" id="email-input" asp-for="Contact.Email">
+        </div>
+
+        <!-- control buttons -->
+        <div class="d-flex flex-column gap-2">
+            <!-- add new contact -->
+            @if (Model.Type == ContactDetailType.ADD_CONTACT)
+            {
+                <a type="submit" class="btn btn-primary">Add contact</a>
+            }
+            // edit contact
+            else if (Model.Type == ContactDetailType.EDIT_CONTACT)
+            {
+                <a type="submit" class="btn btn-primary">Save changes</a>
+                <a type="submit" class="btn btn-danger">Delete</a>
+            }
+            <a type="submit" class="btn btn-secondary">Go Back</a>
+        </div>
+    </form>
+</div>

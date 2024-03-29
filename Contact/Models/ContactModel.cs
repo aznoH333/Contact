@@ -1,18 +1,22 @@
+using Contact.Contact;
+
 namespace Contact.Models;
+
+public enum ContactDetailType
+{
+    EDIT_CONTACT,
+    ADD_CONTACT,
+}
+
 
 public class ContactModel
 {
-    public int Id { get; private set; }
-    public string Name { get; private set; }
-    public string PhoneNumber { get; private set; }
-    public string Email { get; private set; }
+    public ContactData Contact { private set; get; }
+    public ContactDetailType Type { private set; get; }
 
-    public ContactModel(int id, string name, string phoneNumber, string email)
+    public ContactModel(ContactData contactData, ContactDetailType type)
     {
-        // Temporary placeholder
-        Id = id;
-        Name = name;
-        PhoneNumber = phoneNumber;
-        Email = email;
+        Contact = contactData;
+        Type = type;
     }
 }
