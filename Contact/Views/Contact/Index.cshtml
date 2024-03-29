@@ -1,0 +1,40 @@
+@model ContactsOverviewModel
+
+<div class="w-100 bg-light rounded-2 p-3 m-3 mt-xl-5">
+    
+    <!-- header -->
+    <h2 class="pb-3 text-center">Contacts overview</h2>
+    
+    <!-- display contacts -->
+    <div class="rounded m-3 p-3 bg-white overflow-scroll">
+        @foreach (ContactModel contact in Model.contacts)
+        {
+            <div class="bg-light p-3 my-2 rounded shadow">
+                
+                <div class="d-flex justify-content-between">
+                    <!-- contact info -->
+                    <div class="d-flex flex-row gap-4 align-items-center">
+                        <div class="fw-bold">@contact.Name</div>
+                        <div class="@(String.IsNullOrEmpty(contact.PhoneNumber) ? "d-none" : "")">Tel : @contact.PhoneNumber</div>
+                        <div class="@(String.IsNullOrEmpty(contact.Email) ? "d-none" : "")">Mail : @contact.Email</div>
+                    </div>
+                    
+                    
+                    <!-- edit buttons -->
+                    <div>
+                        <a class="btn btn-primary btn-sm m-1">Detail</a>
+                        <a class="btn btn-danger btn-sm m-1">Delete</a>
+                    </div>
+                </div>
+                
+            </div>
+        }
+    </div>
+    
+    <!-- control buttons -->
+    <div class="d-flex flex-column m-2 p-2 gap-2">
+        <a class="btn-primary btn" onclick="showAlertModal('test title', 'test text')">Add contact</a>
+        <a class="btn-danger btn">Delete all contacts</a>
+        <a class="btn-warning btn">Add testing contacts</a>
+    </div>
+</div>
