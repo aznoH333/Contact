@@ -17,4 +17,19 @@ public class ContactData
         PhoneNumber = phoneNumber;
         Email = email;
     }
+
+    public string GetFullName()
+    {
+        return FirstName + " " + LastName;
+    }
+
+    public string GetShortName()
+    {
+        return FirstName[0] + ". " + LastName;
+    }
+
+    public static ContactData CreateEmpty()
+    {
+        return new ContactData(0, "", "", "", "");
+    }
 }
