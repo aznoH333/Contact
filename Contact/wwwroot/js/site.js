@@ -2,19 +2,25 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 
-
-
 // Modal popup functions
 function showAlertModal(modalTitle, alertText){
     
     let modal = new bootstrap.Modal(document.getElementById('alert-modal'), {
-        keyboard: false
     });
     modal.show();
     
-    let title = document.getElementById('alert-modal-title');
-    let text = document.getElementById('alert-modal-text');
-    
-    title.innerHTML = modalTitle;
-    text.innerHTML = alertText;
+    document.getElementById('alert-modal-title').innerHTML = modalTitle;
+    document.getElementById('alert-modal-text').innerHTML = alertText;
+}
+
+
+function showConfirmModal(modalTitle, confirmText, confirmFunction){
+    let modal = new bootstrap.Modal(document.getElementById('confirm-modal'), {
+        
+    });
+    modal.show();
+
+    document.getElementById('confirm-modal-title').innerHTML = modalTitle;
+    document.getElementById('confirm-modal-text').innerHTML = confirmText;
+    document.getElementById('confirm-modal-button').onclick = confirmFunction;
 }

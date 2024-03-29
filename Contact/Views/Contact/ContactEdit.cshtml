@@ -23,11 +23,13 @@
         <div class="mb-3 d-flex flex-column">
             <label for="phone-number-input" class="form-label">Phone number :</label>
             <input type="text" class="form-control" id="phone-number-input" asp-for="Contact.PhoneNumber">
+            <label for="phone-number-input" class="fs-6 text-danger d-none" id="phone-number-warning"></label>
         </div>
 
         <div class="mb-3 d-flex flex-column">
             <label for="email-input" class="form-label">Email :</label>
             <input type="text" class="form-control" id="email-input" asp-for="Contact.Email">
+            <label for="email-input" class="fs-6 text-danger d-none" id="email-warning"></label>
         </div>
 
         <!-- control buttons -->
@@ -35,12 +37,12 @@
             <!-- add new contact -->
             @if (Model.Type == ContactDetailType.ADD_CONTACT)
             {
-                <a type="submit" class="btn btn-primary">Add contact</a>
+                <a type="submit" class="btn btn-primary" onclick="tryUpdateContact(createNewContact)">Add contact</a>
             }
             // edit contact
             else if (Model.Type == ContactDetailType.EDIT_CONTACT)
             {
-                <a type="submit" class="btn btn-primary" onclick="tryUpdateContact()">Save changes</a>
+                <a type="submit" class="btn btn-primary" onclick="tryUpdateContact(updateContact)">Save changes</a>
                 <a type="submit" class="btn btn-danger">Delete</a>
             }
             <a type="submit" class="btn btn-secondary" asp-action="Index">Go Back</a>

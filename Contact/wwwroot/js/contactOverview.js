@@ -20,27 +20,3 @@ function showContactDetailModal(name, phone, email, contactId){
     editButton.setAttribute('asp-route-contactId', contactId)
 }
 
-function tryUpdateContact(){
-    let phoneNumber = document.getElementById('phone-number-input').value
-    let email = document.getElementById('email-input').value
-
-    $.ajax({
-        url: '/Contact/IsContactValid/',
-        type: 'POST',
-        data: {
-            email: email,
-            phoneNumber: phoneNumber,
-        },
-        success: function (data) {
-            // check results
-            console.log(data)
-        },
-        error: function (data) {
-            showAlertModal(data)
-        }
-    });
-}
-
-function updateContact(){
-
-}

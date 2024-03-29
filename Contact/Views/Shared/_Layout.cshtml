@@ -44,7 +44,7 @@
     </div>
 </footer>
 
-<!-- modal -->
+<!-- alert modal -->
 <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -59,6 +59,28 @@
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-primary" data-dismiss="alert-modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- confirm modal -->
+<div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirm-modal-title">Title</h5>
+                <a type="button" class="close" data-dismiss="confirm-modal" aria-label="Close">
+                    <span aria-hidden="true" class="fs-2 btn">&times;</span>
+                </a>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-modal-text">Text</p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-primary" data-dismiss="confirm-modal" id="confirm-modal-button">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="confirm-modal">No</button>
+                
             </div>
         </div>
     </div>
