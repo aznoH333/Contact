@@ -2,7 +2,7 @@ namespace Contact.Contact;
 
 public class ContactData
 {
-    public int Id { get; private set; }
+    public int ID { get; private set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string PhoneNumber { get; private set; }
@@ -11,7 +11,7 @@ public class ContactData
     public ContactData(int id, string firstName, string lastName, string phoneNumber, string email)
     {
         // Temporary placeholder
-        Id = id;
+        ID = id;
         FirstName = firstName;
         LastName = lastName;
         PhoneNumber = phoneNumber;

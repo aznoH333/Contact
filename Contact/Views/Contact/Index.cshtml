@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model ContactsOverviewModel
 
-<script src="js/contactOverview.js" asp-append-version="true"></script>
+<script src="~/js/contactOverview.js" asp-append-version="true"></script>
 
 <div class="w-100 bg-light rounded-2 p-3 m-3 mt-xl-5">
 
@@ -26,8 +26,8 @@
 
                     <!-- edit buttons -->
                     <div>
-                        <a class="btn btn-primary btn-sm m-1" onclick="showContactDetailModal('@(contact.GetFullName())', '@contact.PhoneNumber', '@contact.Email', @contact.Id)">Detail</a>
-                        <a class="btn btn-danger btn-sm m-1">Delete</a>
+                        <a class="btn btn-primary btn-sm m-1" onclick="showContactDetailModal('@(contact.GetFullName())', '@contact.PhoneNumber', '@contact.Email', @contact.ID)">Detail</a>
+                        <a class="btn btn-danger btn-sm m-1" onclick="deletePrompt(@contact.ID)">Delete</a>
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
     <!-- control buttons -->
     <div class="d-flex flex-column m-2 p-2 gap-2">
         <a class="btn-primary btn" asp-action="AddNewContact">Add contact</a>
-        <a class="btn-danger btn">Delete all contacts</a>
+        <a class="btn-danger btn" onclick="showConfirmModal('Confirm', 'Are you sure you want to delete all contacts?', deleteAllContacts)">Delete all contacts</a>
         <a class="btn-warning btn">Add testing contacts</a>
     </div>
 </div>

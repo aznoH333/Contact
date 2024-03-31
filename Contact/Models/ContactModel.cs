@@ -12,6 +12,7 @@ public enum ContactDetailType
 public class ContactModel
 {
     public ContactData Contact { private set; get; }
+    
     public ContactDetailType Type { private set; get; }
 
     public ContactModel(ContactData contactData, ContactDetailType type)
@@ -19,4 +20,5 @@ public class ContactModel
         Contact = contactData;
         Type = type;
     }
+    
 }

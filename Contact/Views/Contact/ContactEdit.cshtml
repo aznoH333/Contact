@@ -3,7 +3,7 @@
 
 <script src="~/js/contactEdit.js" asp-append-version="true"></script>
 
-
+<input type="hidden" id="contact-id" value="@Model.Contact.ID"/>
 
 <div class="d-flex justify-content-center align-items-center w-100 rounded-3 bg-light">
     <form class="d-flex flex-column m-4 w-100">
@@ -11,24 +11,24 @@
         <div class="mb-3 d-flex flex-row">
             <div class="w-50 me-1">
                 <label for="first-name-input" class="form-label">First name</label>
-                <input type="text" class="form-control" id="first-name-input" asp-for="Contact.FirstName">
+                <input type="text" class="form-control" id="first-name-input" value="@Model.Contact.FirstName">
             </div>
             <div class="w-50 ms-1">
                 <label for="last-name-input" class="form-label">Last name</label>
-                <input type="text" class="form-control" id="last-name-input" asp-for="Contact.LastName">
+                <input type="text" class="form-control" id="last-name-input" value="@Model.Contact.LastName">
             </div>
         </div>
 
         <!-- contact input -->
         <div class="mb-3 d-flex flex-column">
             <label for="phone-number-input" class="form-label">Phone number :</label>
-            <input type="text" class="form-control" id="phone-number-input" asp-for="Contact.PhoneNumber">
+            <input type="text" class="form-control" id="phone-number-input" value="@Model.Contact.PhoneNumber">
             <label for="phone-number-input" class="fs-6 text-danger d-none" id="phone-number-warning"></label>
         </div>
 
         <div class="mb-3 d-flex flex-column">
             <label for="email-input" class="form-label">Email :</label>
-            <input type="text" class="form-control" id="email-input" asp-for="Contact.Email">
+            <input type="text" class="form-control" id="email-input" value="@Model.Contact.Email">
             <label for="email-input" class="fs-6 text-danger d-none" id="email-warning"></label>
         </div>
 
@@ -43,7 +43,7 @@
             else if (Model.Type == ContactDetailType.EDIT_CONTACT)
             {
                 <a type="submit" class="btn btn-primary" onclick="tryUpdateContact(updateContact)">Save changes</a>
-                <a type="submit" class="btn btn-danger">Delete</a>
+                <a type="submit" class="btn btn-danger" onclick="deletePrompt()">Delete</a>
             }
             <a type="submit" class="btn btn-secondary" asp-action="Index">Go Back</a>
         </div>

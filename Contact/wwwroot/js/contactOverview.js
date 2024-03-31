@@ -20,3 +20,43 @@ function showContactDetailModal(name, phone, email, contactId){
     editButton.setAttribute('asp-route-contactId', contactId)
 }
 
+
+function deleteAllContacts(){
+    $.ajax({
+        url: '/Contact/DeleteAllContacts/',
+        type: 'DELETE',
+        data: {
+            
+        },
+        success: function (data) {
+            window.location.reload()
+        },
+        error: function (data) {
+            showAlertModal('error', data);
+        }
+    });
+}
+
+function deletePrompt(contactId){
+    showConfirmModal('Delete contact', 'Are you sure you want to delete this contact?', ()=>{
+        $.ajax({
+            url: '/Contact/DeleteContact/',
+            type: 'DELETE',
+            data: {
+                contactId: contactId,
+            },
+            success: function (data) {
+                if (data === 'ok'){
+                    window.location.reload()
+                }else {
+                    showAlertModal('error', data);
+                }
+
+            },
+            error: function (data) {
+                showAlertModal('error', data);
+                console.log('failed');
+            }
+        });
+    })
+}

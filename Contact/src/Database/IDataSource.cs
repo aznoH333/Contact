@@ -10,4 +10,12 @@ public interface IDataSource
     
     List<ContactData> GetContacts();
     ContactData GetContact(int contactId);
+
+    void UpdateContact(ContactData data);
+
+    void CreateContact(string firstName, string lastName, string email, string phoneNumber);
+
+    void DeleteContact(int contactId);
+
+    void DeletaAllContacts();
 }

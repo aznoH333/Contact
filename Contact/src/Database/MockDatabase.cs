@@ -13,7 +13,6 @@ public class MockDatabase : IDataSource
     public void CloseConnection()
     {
         Console.WriteLine("Closed connection to mock database");
-
     }
 
     public List<ContactData> GetContacts()
@@ -32,5 +31,25 @@ public class MockDatabase : IDataSource
     {
         Console.WriteLine("getting mock contact : " + contactId);
         return new ContactData(contactId, "A", "B", "+420 123 456 789", "a@b.c");
+    }
+
+    public void UpdateContact(ContactData data)
+    {
+        Console.WriteLine("Mock contact update");
+    }
+
+    public void CreateContact(string firstName, string lastName, string email, string phoneNumber)
+    {
+        Console.WriteLine("created mock contact");
+    }
+
+    public void DeleteContact(int contactId)
+    {
+        Console.WriteLine("deleted mock contact");
+    }
+
+    public void DeletaAllContacts()
+    {
+        Console.WriteLine("deleted all contacts");
     }
 }
