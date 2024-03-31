@@ -15,11 +15,13 @@ function showContactDetailModal(name, phone, email, contactId){
     emailElement.innerHTML = email
     
     
-    // set button attribute
-    let editButton = document.getElementById('detail-modal-edit-button');
-    editButton.setAttribute('asp-route-contactId', contactId)
+    // set contact id
+    document.getElementById('contact-id').value = contactId;
 }
 
+function redirectToEditContact(){
+    window.location = '/Contact/EditContact?contactId=' + document.getElementById('contact-id').value;
+}
 
 function deleteAllContacts(){
     $.ajax({

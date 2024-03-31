@@ -3,10 +3,10 @@ namespace Contact.Contact;
 public class ContactData
 {
     public int ID { get; private set; }
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
-    public string PhoneNumber { get; private set; }
-    public string Email { get; private set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string PhoneNumber { get; set; }
+    public string Email { get; set; }
 
     public ContactData(int id, string firstName, string lastName, string phoneNumber, string email)
     {
@@ -16,6 +16,11 @@ public class ContactData
         LastName = lastName;
         PhoneNumber = phoneNumber;
         Email = email;
+    }
+
+    public ContactData()
+    {
+        
     }
 
     public string GetFullName()

@@ -69,7 +69,8 @@
             </div>
             <!-- buttons -->
             <div class="modal-footer border-0">
-                <a type="button" class="btn btn-primary" data-dismiss="contact-detail-modal" asp-action="EditContact" asp-route-contactId="" id="detail-modal-edit-button">Edit</a>
+                <input type="hidden" value="" id="contact-id"/>
+                <a type="button" class="btn btn-primary" data-dismiss="contact-detail-modal" onclick="redirectToEditContact()" id="detail-modal-edit-button">Edit</a>
                 <a type="button" class="btn btn-secondary" data-dismiss="contact-detail-modal">Close</a>
             </div>
         </div>

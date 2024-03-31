@@ -6,7 +6,9 @@ public static class DatabaseUtility
     
     public static IDataSource GetDatabaseConnection()
     {
-        IDataSource output = new MockDatabase();
+        //IDataSource output = new MockDatabase();
+        IDataSource output = new ContactDB();
+
         output.Connect(ConnectionString);
         return output;
     }

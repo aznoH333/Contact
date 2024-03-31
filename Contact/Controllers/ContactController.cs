@@ -45,9 +45,11 @@ public class ContactController : Controller
     [HttpPost]
     public JsonResult UpdateContact(int id, string firstName, string lastName, string email, string phoneNumber)
     {
+        
         try
         {
-            var data = new ContactData(id, firstName, lastName, email, phoneNumber);
+            var data = new ContactData(id, firstName, lastName, phoneNumber, email);
+            
             IDataSource db = DatabaseUtility.GetDatabaseConnection();
             db.UpdateContact(data);
             db.CloseConnection();

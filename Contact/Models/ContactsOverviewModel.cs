@@ -9,8 +9,7 @@ public class ContactsOverviewModel
 
     public ContactsOverviewModel()
     {
-        IDataSource database = new MockDatabase();
-        database.Connect("123");
+        IDataSource database = DatabaseUtility.GetDatabaseConnection();
         contacts = database.GetContacts();
         database.CloseConnection();
     }
