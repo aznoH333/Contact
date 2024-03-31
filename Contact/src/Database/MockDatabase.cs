@@ -5,6 +5,7 @@ namespace Contact.database;
 
 public class MockDatabase : IDataSource
 {
+    // this is a fake database that was used befeore a real database was implemented
     public void Connect(string connectionString)
     {
         Console.WriteLine("Connecting to mock database");
@@ -25,6 +26,11 @@ public class MockDatabase : IDataSource
             new ContactData(2, "GHL", "dajidaoi", "+420 123 456 789", "c@gmail.com"),
             new ContactData(3, "ASO", "dasdas", "+420 123 456 789", "d@gmail.com"),
         };
+    }
+
+    public List<ContactData> GetContacts(string filter)
+    {
+        throw new NotImplementedException();
     }
 
     public ContactData GetContact(int contactId)

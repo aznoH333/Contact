@@ -6,8 +6,10 @@ function tryUpdateContact(updateFunction) {
     // reset warnings
     let emailWarning = document.getElementById('email-warning')
     let phoneWarning = document.getElementById('phone-number-warning')
+    let generalWarning  = document.getElementById('general-warning')
     emailWarning.classList.add('d-none')
     phoneWarning.classList.add('d-none')
+    generalWarning.classList.add('d-none')
 
     $.ajax({
         url: '/Contact/IsContactValid/',
@@ -18,7 +20,7 @@ function tryUpdateContact(updateFunction) {
         },
         success: function (data) {
             // check results
-            if (data.email === '' && data.phone === '') {
+            if (data.email === '' && data.phone === '' && data.general === '') {
                 updateFunction()
             } else {
                 // show error
@@ -31,6 +33,12 @@ function tryUpdateContact(updateFunction) {
                 if (data.phone !== '') {
                     phoneWarning.classList.remove('d-none')
                     phoneWarning.innerHTML = data.phone
+                }
+                
+                // general
+                if (data.general !== ''){
+                    generalWarning.classList.remove('d-none')
+                    generalWarning.innerHTML = data.general
                 }
 
             }

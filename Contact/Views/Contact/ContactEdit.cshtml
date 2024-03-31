@@ -1,11 +1,15 @@
 @model ContactModel
 
+@{
+    ViewData["Title"] = Model.Type == ContactDetailType.ADD_CONTACT ? "New" : "Edit";
+}
+
 
 <script src="~/js/contactEdit.js" asp-append-version="true"></script>
 
 <input type="hidden" id="contact-id" value="@Model.Contact.ID"/>
 
-<div class="d-flex justify-content-center align-items-center w-100 rounded-3 bg-light">
+<div class="d-flex justify-content-center align-items-center w-100 rounded-3 bg-light mt-xl-5">
     <form class="d-flex flex-column m-4 w-100">
         <!-- name input -->
         <div class="mb-3 d-flex flex-row">
@@ -34,6 +38,7 @@
 
         <!-- control buttons -->
         <div class="d-flex flex-column gap-2">
+            <p class="fs-6 text-danger d-none" id="general-warning"></p>
             <!-- add new contact -->
             @if (Model.Type == ContactDetailType.ADD_CONTACT)
             {

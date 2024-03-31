@@ -6,11 +6,13 @@ namespace Contact.Models;
 public class ContactsOverviewModel
 {
     public List<ContactData> contacts;
+    public string? Filter { get; set; }
 
-    public ContactsOverviewModel()
+    public ContactsOverviewModel(string? filter)
     {
+        Filter = filter;
         IDataSource database = DatabaseUtility.GetDatabaseConnection();
-        contacts = database.GetContacts();
+        contacts = string.IsNullOrEmpty(filter) ? database.GetContacts() : database.GetContacts(filter);
         database.CloseConnection();
     }
 }

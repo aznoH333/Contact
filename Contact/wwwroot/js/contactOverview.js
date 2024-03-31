@@ -62,3 +62,8 @@ function deletePrompt(contactId){
         });
     })
 }
+
+function searchClicked(){
+    let value = document.getElementById('search-bar').value
+    window.location.href = '/Contact?filter='+value;
+}

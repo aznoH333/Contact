@@ -8,9 +8,10 @@ namespace Contact.Controllers;
 
 public class ContactController : Controller
 {
-    public IActionResult Index()
+    public IActionResult Index(string? filter)
     {
-        return View(new ContactsOverviewModel());
+        return View(new ContactsOverviewModel(filter));
+
     }
 
     public IActionResult EditContact(int contactId)
@@ -33,22 +34,49 @@ public class ContactController : Controller
     [HttpPost]
     public JsonResult IsContactValid(string email, string phoneNumber)
     {
-        var output = new Dictionary<string, string>
+        var output = new Dictionary<string, string>()
         {
-            ["email"] = ValidationUtility.IsEmailValid(email) ? "" : "Please enter a valid email adress",
-            ["phone"] = ValidationUtility.IsPhoneNumberValid(phoneNumber) ? "" : "Please enter a valid phone number"
+            { "email", "" },
+            { "phone", "" },
+            { "general", "" },
         };
+        
+        bool hasEmail = !string.IsNullOrEmpty(email);
+        bool hasPhone = !string.IsNullOrEmpty(phoneNumber);
+        
+        // has neither
+        if (hasEmail == false && hasPhone == false)
+        {
+            output["general"] = "email or phone is required";
+
+            return new JsonResult(output);
+        }
+        // email
+        if (hasEmail)
+        {
+            output["email"] = ValidationUtility.IsEmailValid(email) ? "" : "Please enter a valid email adress";
+        }
+        // phone
+        if (hasPhone)
+        {
+            output["phone"] = ValidationUtility.IsPhoneNumberValid(phoneNumber) ? "" : "Please enter a valid phone number";
+        }
+
+        
+        
+        
+        
 
         return new JsonResult(output);
     }
 
     [HttpPost]
-    public JsonResult UpdateContact(int id, string firstName, string lastName, string email, string phoneNumber)
+    public JsonResult UpdateContact(int id, string? firstName, string? lastName, string? email, string? phoneNumber)
     {
         
         try
         {
-            var data = new ContactData(id, firstName, lastName, phoneNumber, email);
+            var data = new ContactData(id, firstName ?? "", lastName ?? "", phoneNumber ?? "", email ?? "");
             
             IDataSource db = DatabaseUtility.GetDatabaseConnection();
             db.UpdateContact(data);
@@ -63,12 +91,12 @@ public class ContactController : Controller
     }
 
     [HttpPost]
-    public JsonResult CreateNewContact(string firstName, string lastName, string email, string phoneNumber)
+    public JsonResult CreateNewContact(string? firstName, string? lastName, string? email, string? phoneNumber)
     {
         try
         {
             IDataSource db = DatabaseUtility.GetDatabaseConnection();
-            db.CreateContact(firstName, lastName, email, phoneNumber);
+            db.CreateContact(firstName ?? "", lastName ?? "", email ?? "", phoneNumber ?? "");
             db.CloseConnection();
             return new JsonResult("ok");
         }

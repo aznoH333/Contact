@@ -18,6 +18,7 @@ public class ContactData
         Email = email;
     }
 
+    // empty constructor for ef
     public ContactData()
     {
         
@@ -30,6 +31,15 @@ public class ContactData
 
     public string GetShortName()
     {
+        if (String.IsNullOrEmpty(FirstName))
+        {
+            return LastName;
+        }
+        if (String.IsNullOrEmpty(LastName))
+        {
+            return FirstName;
+        }
+        
         return FirstName[0] + ". " + LastName;
     }
 

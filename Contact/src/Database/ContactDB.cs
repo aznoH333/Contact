@@ -22,10 +22,13 @@ public class ContactDB : IDataSource
         return db.Contacts.ToList();
     }
 
+    public List<ContactData> GetContacts(string filter)
+    {
+        return db.Contacts.Where(c => (c.FirstName + " " + c.LastName).Contains(filter) || c.Email.Contains(filter) || c.PhoneNumber.Contains(filter)).ToList();
+    }
+
     public ContactData GetContact(int contactId)
     {
-        Console.WriteLine(contactId);
-
         return db.Contacts.First(c => c.ID == contactId);
     }
 
