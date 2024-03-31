@@ -41,6 +41,6 @@ nebo spustit skrze Visual Studio nebo Rider
         existuje mock db kterou jsem používal než jsem implementoval ef
         v kódu už se nepoužívá
         interface IDataSource existuje aby šlo mock db zaměnit za jinou db změněním jedné řádky v DatabaseUtility
-        IDataSource má metody connect a close connection protože jsem zapoměl že c# ef je nemá
+        IDataSource má metody connect a close connection protože jsem zapomněl že c# ef je nemá
         
         
